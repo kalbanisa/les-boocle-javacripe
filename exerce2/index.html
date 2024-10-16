@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tables de Multiplication</title>
+    <style>
+        table {
+            width: 50%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Tables de Multiplication</h1>
+    <div id="tables"></div>
+
+    <script>
+        function isInteger(n) {
+            return Number.isInteger(Number(n));
+        }
+
+        function getValidNumber() {
+            let n;
+            do {
+                n = prompt("Veuillez saisir un nombre entier:");
+            } while (!isInteger(n));
+            return Number(n);
+        }
+
+        function createMultiplicationTable(n) {
+            let tableHtml = '<table><tr><th>Multiplication Table of ' + n + '</th></tr>';
+            for (let i = 1; i <= 10; i++) {
+                tableHtml += '<tr><td>' + n + ' x ' + i + ' = ' + (n * i) + '</td></tr>';
+            }
+            tableHtml += '</table>';
+            return tableHtml;
+        }
+
+        let n = getValidNumber();
+        let tablesDiv = document.getElementById('tables');
+        for (let i = 1; i <= 10; i++) {
+            tablesDiv.innerHTML += createMultiplicationTable(i);
+        }
+    </script>
+</body>
+</html>
